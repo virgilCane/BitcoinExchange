@@ -1,4 +1,6 @@
 {
   "debug": true,
-  "testing": true
+  "testing": true,
+  "environmentName": "Local Development Environment",
+  "apiEndpoint": "https://localhost:44301/api/"
 }
