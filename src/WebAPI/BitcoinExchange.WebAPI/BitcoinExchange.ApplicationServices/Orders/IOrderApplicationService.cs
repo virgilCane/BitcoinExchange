@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BitcoinExchange.ApplicationServices.Orders
 {
-public  interface IOrderApplicationService
+public interface IOrderApplicationService
   {
-     Task<TopOrders> GetTop100Async(string pair);
+   Task<TopOrders> GetTop100Async(string pair);
   }
 }

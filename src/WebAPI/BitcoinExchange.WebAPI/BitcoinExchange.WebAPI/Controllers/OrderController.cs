@@ -15,9 +15,9 @@ namespace BitcoinExchange.WebAPI.Controllers
   public class OrderController: ControllerBase
   {
     private readonly ILogger<OrderController> _logger;
-    private readonly OrderApplicationService _appService;
+    private readonly IOrderApplicationService _appService;
 
-    public OrderController(ILogger<OrderController> logger, OrderApplicationService appService)
+    public OrderController(ILogger<OrderController> logger, IOrderApplicationService appService)
     {
       _logger = logger;
       _appService = appService;

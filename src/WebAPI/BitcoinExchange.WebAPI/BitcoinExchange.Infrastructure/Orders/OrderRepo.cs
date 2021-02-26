@@ -13,7 +13,7 @@ namespace BitcoinExchange.Infrastructure.Orders
   {
     private readonly IHttpClientFactory _clientFactory;
     private HttpClient _client;
-    public OrderRepo(IHttpClientFactory clientFactory)
+    public OrderRepo(IHttpClientFactory clientFactory, HttpClient client)
     {
       _clientFactory = clientFactory;
       _client = _clientFactory.CreateClient();
@@ -23,7 +23,8 @@ namespace BitcoinExchange.Infrastructure.Orders
     }
     public async Task<TopOrders> GetTop100Async(string pair)
     {
-      var request = new HttpRequestMessage(HttpMethod.Get, Endpoints.Top100);
+      var paramatisedRequest = $"{Endpoints.Top100}?pair={pair}";
+      var request = new HttpRequestMessage(HttpMethod.Get, paramatisedRequest);
       var response = await _client.SendAsync(request);
       if (response.IsSuccessStatusCode)
       {

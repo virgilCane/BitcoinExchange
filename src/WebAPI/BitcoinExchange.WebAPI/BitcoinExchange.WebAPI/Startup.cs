@@ -27,23 +27,24 @@ namespace BitcoinExchange.WebAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      
-      
-      services.AddScoped<IOrderApplicationService, OrderApplicationService>();
-      services.AddScoped<IOrderRepo, OrderRepo>();
-      services.AddHttpClient<OrderRepo>();
       services.AddMvc();
+      services.AddSingleton<IOrderRepo, OrderRepo>();
+      services.AddSingleton<IOrderApplicationService, OrderApplicationService>();
+      services.AddHttpClient<OrderRepo>();
       services.AddControllers();
       
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
       }
+      
 
       app.UseHttpsRedirection();
 
